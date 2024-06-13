@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback do Jogo</title>
+    <link rel="stylesheet" href="/caminho/para/seu/estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback do Jogo</h1>
+        <form action="https://formsubmit.co/thaylonsantos2@gmail.com" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+            <!-- Campo oculto para o redirecionamento -->
+            <input type="hidden" name="_next" value="">
+
+            <button type="submit">Enviar Feedback</button>
+        </form>
+    </div>
+</body>
+</html>
