@@ -1,15 +1,11 @@
-
 let pontosAtual = 0;
 
 let nomeJogador = localStorage.getItem("nomeJogador");
-
 document.getElementById('jogador').textContent = nomeJogador;
 
 document.getElementById("TrocarJogador").addEventListener("click", function(event) {
     event.preventDefault();
-   
     savePlayerPoints(nomeJogador, pontosAtual);
-   
     window.location.href = "../Tela1/TelaBoasVindas.html";
 });
 
@@ -29,7 +25,7 @@ function gerarNumeroAleatorio() {
 
 let numeroAleatorio = gerarNumeroAleatorio();
 
-document.getElementById('botao').addEventListener('click', function (event) {
+document.getElementById('botao').addEventListener('click', function(event) {
     event.preventDefault();
 
     let numeroDigitado = parseInt(document.getElementById('numero').value);
@@ -46,33 +42,27 @@ document.getElementById('botao').addEventListener('click', function (event) {
         pontosAtual += 1;
         document.getElementById('pontosAtual').textContent = pontosAtual;
         numeroAleatorio = gerarNumeroAleatorio();
-
+        modalDica.textContent = "";
     } else if (numeroDigitado > 10 || numeroDigitado < 1) {
         modalMensagem.textContent = "Número inválido.";
         modalConteudo.classList.add("error");
-
-    } else if(numeroDigitado < numeroAleatorio){
+        modalDica.textContent = "";
+    } else {
         modalMensagem.textContent = "Número errado. Tente novamente.";
-        modalMensagem.textContent = "Tente um numero maior!"
         modalConteudo.classList.add("error");
-
-    }else if(numeroDigitado > numeroAleatorio){
-        modalMensagem.textContent = "Número errado. Tente novamente.";
-        modalMensagem.textContent = "Tente um numero menor!"
-        modalConteudo.classList.add("error");
+        modalDica.textContent = numeroDigitado < numeroAleatorio ? "Tente um número maior!" : "Tente um número menor!";
     }
 
     modal.style.display = "block";
 });
 
-document.querySelector(".fechar").addEventListener('click', function () {
+document.querySelector(".fechar").addEventListener('click', function() {
     document.querySelector(".modal").style.display = "none";
 });
 
-window.addEventListener('click', function (event) {
+window.addEventListener('click', function(event) {
     let modal = document.querySelector(".modal");
     if (event.target === modal) {
         modal.style.display = "none";
     }
 });
-
